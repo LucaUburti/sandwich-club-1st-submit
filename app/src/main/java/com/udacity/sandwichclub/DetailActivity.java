@@ -2,6 +2,7 @@ package com.udacity.sandwichclub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -24,14 +25,22 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    @BindView(R.id.linear_layout) LinearLayout linearLayout;
-    @BindView(R.id.aka_header_tv) TextView akaHeaderTv;
-    @BindView(R.id.also_known_tv) TextView akaTv;
-    @BindView(R.id.ingredients_tv) TextView ingredientsTv;
-    @BindView(R.id.origin_header_tv) TextView originHeaderTv;
-    @BindView(R.id.description_tv) TextView descriptionTv;
-    @BindView(R.id.image_iv)ImageView ingredientsIv;
-    @BindView(R.id.origin_tv) TextView originTv;
+    @BindView(R.id.linear_layout)
+    LinearLayout linearLayout;
+    @BindView(R.id.aka_header_tv)
+    TextView akaHeaderTv;
+    @BindView(R.id.also_known_tv)
+    TextView akaTv;
+    @BindView(R.id.ingredients_tv)
+    TextView ingredientsTv;
+    @BindView(R.id.origin_header_tv)
+    TextView originHeaderTv;
+    @BindView(R.id.description_tv)
+    TextView descriptionTv;
+    @BindView(R.id.image_iv)
+    ImageView ingredientsIv;
+    @BindView(R.id.origin_tv)
+    TextView originTv;
 
 
     @Override
@@ -39,6 +48,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
 
         Intent intent = getIntent();
@@ -83,7 +95,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-
 
 
         String formattedAkas = TextUtils.join(", ", sandwich.getAlsoKnownAs());
