@@ -49,32 +49,32 @@ public class JsonUtils {
         JSONObject jsonSandwich = new JSONObject(json);
 
         JSONObject jsonName = jsonSandwich.getJSONObject(JSON_NAME_KEY);
-        String sandwichName = jsonName.getString(JSON_MAINNAME_KEY);
+        String sandwichName = jsonName.optString(JSON_MAINNAME_KEY);
         selectedSandwich.setMainName(sandwichName);
 
-        JSONArray jsonAKAs = jsonName.getJSONArray(JSON_AKA_KEY);
+        JSONArray jsonAKAs = jsonName.optJSONArray(JSON_AKA_KEY);
         ArrayList<String> sandwichAKAs = new ArrayList<>();
         for (int i = 0; i < jsonAKAs.length(); i++) {
-            String currentAKA = jsonAKAs.getString(i);
+            String currentAKA = jsonAKAs.optString(i);
             sandwichAKAs.add(currentAKA);
         }
         selectedSandwich.setAlsoKnownAs(sandwichAKAs);
 
 
-        String sandwichOrigin = jsonSandwich.getString(JSON_ORIGIN_KEY);
+        String sandwichOrigin = jsonSandwich.optString(JSON_ORIGIN_KEY);
         selectedSandwich.setPlaceOfOrigin(sandwichOrigin);
 
-        String sandwichDescription = jsonSandwich.getString(JSON_DESC_KEY);
+        String sandwichDescription = jsonSandwich.optString(JSON_DESC_KEY);
         selectedSandwich.setDescription(sandwichDescription);
 
-        String sandwichImage = jsonSandwich.getString(JSON_IMG_KEY);
+        String sandwichImage = jsonSandwich.optString(JSON_IMG_KEY);
         selectedSandwich.setImage(sandwichImage);
 
 
-        JSONArray jsonIngredients = jsonSandwich.getJSONArray(JSON_INGREDIENTS_KEY);
+        JSONArray jsonIngredients = jsonSandwich.optJSONArray(JSON_INGREDIENTS_KEY);
         ArrayList<String> sandwichIngredients = new ArrayList<>();
         for (int i = 0; i < jsonIngredients.length(); i++) {
-            String currentIngredient = jsonIngredients.getString(i);
+            String currentIngredient = jsonIngredients.optString(i);
             sandwichIngredients.add(currentIngredient);
         }
         selectedSandwich.setIngredients(sandwichIngredients);
