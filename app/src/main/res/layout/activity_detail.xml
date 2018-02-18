@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/image_iv"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/image_height"
             android:adjustViewBounds="true"
             android:contentDescription="@string/sandwich_picture_content_description"
             android:scaleType="centerCrop" />
@@ -25,9 +25,9 @@
             android:id="@+id/aka_header_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:paddingTop="@dimen/padding"
             android:text="@string/detail_also_known_as_label"
             android:textStyle="bold" />
 
@@ -35,16 +35,16 @@
             android:id="@+id/also_known_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:paddingTop="@dimen/padding"
             android:text="@string/detail_ingredients_label"
             android:textStyle="bold" />
 
@@ -52,16 +52,16 @@
             android:id="@+id/ingredients_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding" />
 
         <TextView
             android:id="@+id/origin_header_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:paddingTop="@dimen/padding"
             android:text="@string/detail_place_of_origin_label"
             android:textStyle="bold" />
 
@@ -69,16 +69,16 @@
             android:id="@+id/origin_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:paddingTop="@dimen/padding"
             android:text="@string/detail_description_label"
             android:textStyle="bold" />
 
@@ -86,9 +86,9 @@
             android:id="@+id/description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:paddingBottom="@dimen/padding"
             />
     </LinearLayout>
 
