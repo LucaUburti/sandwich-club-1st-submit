@@ -30,20 +30,29 @@ import java.util.List;
 }*/
 
 public class JsonUtils {
+    private static final String JSON_NAME_KEY = "name";
+    private static final String JSON_MAINNAME_KEY = "mainName";
+    private static final String JSON_AKA_KEY = "alsoKnownAs";
+    private static final String JSON_ORIGIN_KEY = "placeOfOrigin";
+    private static final String JSON_DESC_KEY = "description";
+    private static final String JSON_IMG_KEY = "image";
+    private static final String JSON_INGREDIENTS_KEY = "ingredients";
 
     public static Sandwich parseSandwichJson(String json) throws JSONException {
         if (json.isEmpty()) {
             return null;
         }
+
+
         Sandwich selectedSandwich = new Sandwich();
 
         JSONObject jsonSandwich = new JSONObject(json);
 
-        JSONObject jsonName = jsonSandwich.getJSONObject("name");
-        String sandwichName = jsonName.getString("mainName");
+        JSONObject jsonName = jsonSandwich.getJSONObject(JSON_NAME_KEY);
+        String sandwichName = jsonName.getString(JSON_MAINNAME_KEY);
         selectedSandwich.setMainName(sandwichName);
 
-        JSONArray jsonAKAs = jsonName.getJSONArray("alsoKnownAs");
+        JSONArray jsonAKAs = jsonName.getJSONArray(JSON_AKA_KEY);
         ArrayList<String> sandwichAKAs = new ArrayList<>();
         for (int i = 0; i < jsonAKAs.length(); i++) {
             String currentAKA = jsonAKAs.getString(i);
@@ -52,17 +61,17 @@ public class JsonUtils {
         selectedSandwich.setAlsoKnownAs(sandwichAKAs);
 
 
-        String sandwichOrigin = jsonSandwich.getString("placeOfOrigin");
+        String sandwichOrigin = jsonSandwich.getString(JSON_ORIGIN_KEY);
         selectedSandwich.setPlaceOfOrigin(sandwichOrigin);
 
-        String sandwichDescription = jsonSandwich.getString("description");
+        String sandwichDescription = jsonSandwich.getString(JSON_DESC_KEY);
         selectedSandwich.setDescription(sandwichDescription);
 
-        String sandwichImage = jsonSandwich.getString("image");
+        String sandwichImage = jsonSandwich.getString(JSON_IMG_KEY);
         selectedSandwich.setImage(sandwichImage);
 
 
-        JSONArray jsonIngredients = jsonSandwich.getJSONArray("ingredients");
+        JSONArray jsonIngredients = jsonSandwich.getJSONArray(JSON_INGREDIENTS_KEY);
         ArrayList<String> sandwichIngredients = new ArrayList<>();
         for (int i = 0; i < jsonIngredients.length(); i++) {
             String currentIngredient = jsonIngredients.getString(i);
