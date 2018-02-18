@@ -16,17 +16,30 @@ import com.udacity.sandwichclub.utils.JsonUtils;
 
 import org.json.JSONException;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    @BindView(R.id.linear_layout) LinearLayout linearLayout;
+    @BindView(R.id.aka_header_tv) TextView akaHeaderTv;
+    @BindView(R.id.also_known_tv) TextView akaTv;
+    @BindView(R.id.ingredients_tv) TextView ingredientsTv;
+    @BindView(R.id.origin_header_tv) TextView originHeaderTv;
+    @BindView(R.id.description_tv) TextView descriptionTv;
+    @BindView(R.id.image_iv)ImageView ingredientsIv;
+    @BindView(R.id.origin_tv) TextView originTv;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
 
-        ImageView ingredientsIv = findViewById(R.id.image_iv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -53,20 +66,6 @@ public class DetailActivity extends AppCompatActivity {
             closeOnError();
             return;
         }
-/*SUGGESTION
-To learn more, here, you can also try to use error() and placeholder() provided by Picasso to avoid the potential crash due to empty or null image URL values. Before the error placeholder is shown, Picasso will retry your request for three times.
-
-You could try to use these two methods as shown in the sample code below (from Picasso documentation):
-
-Picasso.with(context)
-    .load(url)
-    .placeholder(R.drawable.user_placeholder)
-    .error(R.drawable.user_placeholder_error)
-    .into(imageView);
-Since the quality of the data maintained in this movie database is really good, using Picasso without error() might not cause any problem. However, when it comes to some other APIs (unfortunately, Spotify is one of them), the chance of fighting against some strange values could get higher. So that's why I strongly suggest you to use these two methods in your future projects.
-
-Try it yourself! :)
-*/
 
         populateUI(sandwich);
         Picasso.with(this)
@@ -85,10 +84,8 @@ Try it yourself! :)
 
     private void populateUI(Sandwich sandwich) {
 
-        LinearLayout linearLayout = findViewById(R.id.linear_layout);
 
-        TextView akaHeaderTv = findViewById(R.id.aka_header_tv);
-        TextView akaTv = findViewById(R.id.also_known_tv);
+
         String formattedAkas = TextUtils.join(", ", sandwich.getAlsoKnownAs());
 
         if (formattedAkas.isEmpty()) {
@@ -98,19 +95,15 @@ Try it yourself! :)
             akaTv.setText(formattedAkas);
         }
 
-        TextView ingredientsTv = findViewById(R.id.ingredients_tv);
         String formattedIngredients = TextUtils.join(", ", sandwich.getIngredients());
         ingredientsTv.setText(formattedIngredients);
 
-        TextView originHeaderTv = findViewById(R.id.origin_header_tv);
-        TextView originTv = findViewById(R.id.origin_tv);
         if (sandwich.getPlaceOfOrigin().isEmpty()) {
             linearLayout.removeView(originHeaderTv);
             linearLayout.removeView(originTv);
         } else {
             originTv.setText(sandwich.getPlaceOfOrigin());
         }
-        TextView descriptionTv = findViewById(R.id.description_tv);
         descriptionTv.setText(sandwich.getDescription());
 
 
