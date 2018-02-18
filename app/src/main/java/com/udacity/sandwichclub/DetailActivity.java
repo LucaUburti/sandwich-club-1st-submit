@@ -53,11 +53,26 @@ public class DetailActivity extends AppCompatActivity {
             closeOnError();
             return;
         }
+/*SUGGESTION
+To learn more, here, you can also try to use error() and placeholder() provided by Picasso to avoid the potential crash due to empty or null image URL values. Before the error placeholder is shown, Picasso will retry your request for three times.
 
+You could try to use these two methods as shown in the sample code below (from Picasso documentation):
+
+Picasso.with(context)
+    .load(url)
+    .placeholder(R.drawable.user_placeholder)
+    .error(R.drawable.user_placeholder_error)
+    .into(imageView);
+Since the quality of the data maintained in this movie database is really good, using Picasso without error() might not cause any problem. However, when it comes to some other APIs (unfortunately, Spotify is one of them), the chance of fighting against some strange values could get higher. So that's why I strongly suggest you to use these two methods in your future projects.
+
+Try it yourself! :)
+*/
 
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
